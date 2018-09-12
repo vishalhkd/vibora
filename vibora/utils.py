@@ -131,9 +131,11 @@ def wait_server_available(host: str, port: int, timeout: int=10) -> None:
     :param port: TCP port used to connect.
     :return:
     """
-    sock = socket.socket()
-    sock.settimeout(timeout)
+    
     while timeout > 0:
+        sock = socket.socket()
+        sock.settimeout(timeout)
+        
         start_time = time.time()
         try:
             sock.connect((host, port))
